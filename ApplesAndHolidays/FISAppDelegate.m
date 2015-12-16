@@ -19,12 +19,19 @@
 
 -(NSArray *)pickApplesFromFruits:(NSArray *)fruits
 {
-    return nil;
+    NSMutableArray *applesArray = [[NSMutableArray alloc] init];
+    for (NSString *fruit in fruits) {
+        if ([fruit isEqualToString:@"apple"]) {
+            [applesArray addObject:fruit];
+        }
+    }
+    return applesArray;
 }
 
 -(NSArray *)holidaysInSeason:(NSString *)season inDatabase:(NSDictionary *)database
 {
-    return Nil;
+    NSArray *holidays = [database[season] allKeys];
+    return holidays;
 }
 
 - (NSArray *)suppliesInHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database
