@@ -41,7 +41,12 @@
 
 - (BOOL)holiday:(NSString *)holiday isInSeason:(NSString *)season inDatabase:(NSDictionary *)database
 {
-    return nil;
+    for (NSString *h in database[season]) {
+        if ([h isEqualToString:holiday]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 - (BOOL)supply:(NSString *)supply isInHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database
