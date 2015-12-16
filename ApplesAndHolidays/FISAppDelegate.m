@@ -69,7 +69,9 @@
 
 - (NSDictionary *)addSupply:(NSDictionary *)supply toHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)databse
 {
-    return nil;
+    NSMutableDictionary *databaseCopy = [databse mutableCopy];
+    [databaseCopy[season][holiday] addObject:supply];
+    return databaseCopy;
 }
 
 
