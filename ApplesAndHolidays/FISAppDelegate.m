@@ -13,25 +13,22 @@
 
 - (NSArray *)pickApplesFromFruits:(NSArray *)fruits {
     
-    NSPredicate *applePredicate = [ NSPredicate predicateWithFormat:@"apples"];
-    NSArray *apples = [fruits filteredArrayUsingPredicate:applePredicate];
-    
-    for (NSArray *apple in apples) {
-        
-    }
-
-        return nil;
+    NSPredicate *applePredicate = [NSPredicate predicateWithFormat:@"self CONTAINS 'apple'"];
+    NSArray *appleArray = [fruits filteredArrayUsingPredicate:applePredicate];
+    return appleArray;
 }
 
 - (NSArray *)holidaysInSeason:(NSString *)season
                    inDatabase:(NSDictionary *)database {
     
-    return nil;
+    NSArray *keysForSeason = [database[season] allKeys];
+    return keysForSeason;
 }
 
 - (NSArray *)suppliesInHoliday:(NSString *)holiday
                       inSeason:(NSString *)season
                     inDatabase:(NSDictionary *)database {
+    
     
     return nil;
     
