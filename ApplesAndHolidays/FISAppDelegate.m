@@ -53,6 +53,7 @@
       inSeason:(NSString *)season
     inDatabase:(NSDictionary *)database {
     
+    
     for (NSString *item in database[season][holiday]) {
         if ([item isEqualToString:supply]) {
             return YES;
