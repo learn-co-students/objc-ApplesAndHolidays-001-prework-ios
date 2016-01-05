@@ -49,7 +49,12 @@
                     toSeason:(NSString *)season
                   inDatabase:(NSDictionary *)database {
     
-    return nil;
+    if ([[database[season] allKeys] containsObject:holiday]) {
+        return nil;
+    }
+    
+    [database[season] setObject:[NSMutableArray array] forKey:holiday];
+    return database;
 }
 
 - (NSDictionary *)addSupply:(NSString *)supply
