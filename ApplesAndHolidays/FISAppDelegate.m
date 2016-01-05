@@ -20,7 +20,7 @@
 - (NSArray *)holidaysInSeason:(NSString *)season
                    inDatabase:(NSDictionary *)database {
     
-    return nil;
+    return [database[season] allKeys];
 }
 
 - (NSArray *)suppliesInHoliday:(NSString *)holiday
