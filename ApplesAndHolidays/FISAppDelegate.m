@@ -12,8 +12,9 @@
 }
 
 - (NSArray *)pickApplesFromFruits:(NSArray *)fruits {
-
-    return nil;
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self == 'apple'"];
+    return [fruits filteredArrayUsingPredicate:predicate];
 }
 
 - (NSArray *)holidaysInSeason:(NSString *)season
