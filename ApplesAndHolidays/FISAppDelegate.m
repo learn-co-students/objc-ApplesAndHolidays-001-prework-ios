@@ -34,7 +34,7 @@
      isInSeason:(NSString *)season
      inDatabase:(NSDictionary *)database {
     
-    return NO;
+    return [[self holidaysInSeason:season inDatabase:database] containsObject:holiday];
 }
 
 - (BOOL)supply:(NSString *)supply
