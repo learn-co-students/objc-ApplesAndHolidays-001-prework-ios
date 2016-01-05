@@ -27,7 +27,7 @@
                       inSeason:(NSString *)season
                     inDatabase:(NSDictionary *)database {
     
-    return nil;
+    return database[season][holiday];
 }
 
 - (BOOL)holiday:(NSString *)holiday
