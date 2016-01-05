@@ -62,7 +62,8 @@
                    inSeason:(NSString *)season
                  inDatabase:(NSDictionary *)database {
     
-    return nil;
+    [database[season][holiday] addObject:supply];
+    return database;
 }
 
 @end
