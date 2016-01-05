@@ -42,7 +42,7 @@
       inSeason:(NSString *)season
     inDatabase:(NSDictionary *)database {
     
-    return NO;
+    return [[self suppliesInHoliday:holiday inSeason:season inDatabase:database] containsObject:supply];
 }
 
 - (NSDictionary *)addHoliday:(NSString *)holiday
