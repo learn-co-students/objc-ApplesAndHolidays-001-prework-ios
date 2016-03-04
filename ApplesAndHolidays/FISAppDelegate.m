@@ -8,16 +8,70 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSMutableDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSDictionary *test = @{ @"Winter" : [@{ @"Christmas Day"    : [@[ @"plastic tree"   ,
+                                                                      @"tinsel"         ,
+                                                                      @"lights"         ,
+                                                                      @"presents"       ,
+                                                                      @"wreath"         ,
+                                                                      @"mistletoe"      ,
+                                                                      @"Christmas music"
+                                                                      ] mutableCopy],
+                                            @"New Year's Day"   : [@[ @"party hats"     ,
+                                                                      @"kazoos"         ,
+                                                                      @"champagne"
+                                                                      ] mutableCopy]
+                                            } mutableCopy],
+                            @"Spring" : [@{ @"Memorial Day"     : [@[ @"American flag"  ,
+                                                                      @"memoirs"
+                                                                      ] mutableCopy]
+                                            } mutableCopy],
+                            @"Summer" : [@{ @"Independence Day" : [@[ @"fireworks"      ,
+                                                                      @"barbeque"       ,
+                                                                      @"picnic blanket" ,
+                                                                      @"sunscreen"
+                                                                      ] mutableCopy],
+                                            @"Labor Day"        : [@[ @"white jeans"    ,
+                                                                      @"shopping bag"
+                                                                      ] mutableCopy]
+                                            } mutableCopy],
+                            @"Fall"   : [@{ @"Veteran's Day"    : [@[ @"barbeque"       ,
+                                                                      @"American flag"
+                                                                      ] mutableCopy],
+                                            @"Thanksgiving Day" : [@[ @"turkey"         ,
+                                                                      @"gravy"          ,
+                                                                      @"mashed potatoes",
+                                                                      @"acorn squash"   ,
+                                                                      @"cranberry sauce",
+                                                                      @"napkins"
+                                                                      ] mutableCopy]
+                                            } mutableCopy]
+                            };
+    
+    [self holidaysInSeason:@"Winter" inDatabase:test];
+    
     return YES;
 }
 
 -(NSArray *)pickApplesFromFruits:(NSArray *)fruits {
-    
-    return nil;
+    NSPredicate *appledPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS 'apple'"];
+    NSArray *numberOfApplesInArray = [fruits filteredArrayUsingPredicate:appledPredicate];
+    return numberOfApplesInArray;
 }
 
 -(NSArray *)holidaysInSeason:(NSString *)season inDatabase:(NSDictionary *)database {
-    return nil;
+    
+    NSMutableArray *mholidaysInSeason = [[NSMutableArray alloc]init];
+    
+    //NSLog(@"Holidays in winter: %@", database[@"Winter"]); //adds holiday and supplies. want just holiday.
+    //NSPredicate *seasonInDataPred = [NSPredicate predicateWithFormat:@"self CONTAINS[c] %@", season]; //don't need predicate here
+    //NSArray *holidaysInSeason2 = [[database allKeys] filteredArrayUsingPredicate:seasonInDataPred];
+    
+    for (NSDictionary *key in database[season]) {
+        [mholidaysInSeason addObject:key];
+    }
+    //NSLog(@"result of predicate: %@", holidaysInSeason2); //returns only winter
+    NSLog(@"result of for loop: %@", mholidaysInSeason);
+    return mholidaysInSeason;
 }
 
 -(NSArray *)suppliesInHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database {
