@@ -47,7 +47,8 @@
                                             } mutableCopy]
                             };
     
-    [self holidaysInSeason:@"Winter" inDatabase:test];
+    [self addSupply:@"xxx" toHoliday:@"Labor Day" inSeason:@"Summer" inDatabase:test];
+    
     
     return YES;
 }
@@ -75,23 +76,57 @@
 }
 
 -(NSArray *)suppliesInHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database {
-    return nil;
+    
+    NSMutableArray *mSuppliesInHoliday = [[NSMutableArray alloc]init];
+    for (NSString *supply in database[season][holiday]) {
+        [mSuppliesInHoliday addObject:supply];
+    }
+    return mSuppliesInHoliday;
 }
 
 -(BOOL)holiday:(NSString *)holiday isInSeason:(NSString *)season inDatabase:(NSDictionary *)database {
-    return nil;
+    
+    NSPredicate *holidayInSeasonPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[c] %@", holiday];
+    BOOL holidayisInSeason =[[database[season] allKeys] filteredArrayUsingPredicate:holidayInSeasonPredicate].count;
+    NSLog(@"%d", holidayisInSeason);
+    
+    //NSLog(@"one or zero in array; %lu", [checkForKeys count]);
+    /*
+    for (NSString *holidayKey in database[season]) {
+        if ([holidayKey isEqualToString:holiday] ) {
+            NSLog(@"YES");
+            return YES;
+        }
+    }
+    */
+    //NSArray *seasonWithHolidayArray = [[database allKeys]] filteredArrayUsingPredicate:holidayInSeasonPredicate];
+    //BOOL seasonWithHoliday = [[database allKeys] filteredArrayUsingPredicate:holidayInSeasonPredicate].count;
+    //NSLog(@"%@", seasonWithHolidayArray);
+    //NSLog(@"%d", seasonWithHoliday);
+    //NSLog(@"NO");
+    return holidayisInSeason;
 }
 
 -(BOOL)supply:(NSString *)supply isInHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database {
-    return nil;
+    
+    NSPredicate *haveSupplyPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[c] %@", supply];
+    BOOL haveSupply = [[database[season][holiday] filteredArrayUsingPredicate:haveSupplyPredicate] count];
+    
+    return haveSupply;
 }
 
 -(NSDictionary *)addHoliday:(NSString *)holiday toSeason:(NSString *)season inDatabase:(NSDictionary *)database {
-    return nil;
+    
+    NSMutableArray *emtpyMutableArray = [[NSMutableArray alloc]init];
+    database[season][holiday] = emtpyMutableArray;
+
+    return database;
 }
 
 -(NSDictionary *)addSupply:(NSString *)supply toHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database {
-    return nil;
+    [database[season][holiday] addObject:supply];
+   
+    return database;
 }
 
 
