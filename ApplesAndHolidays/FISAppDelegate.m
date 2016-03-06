@@ -19,6 +19,25 @@
 
 // Apple picker methods
 
+
+/**
+ 
+ pickApplesFromFruits: which takes one NSArray argument fruits and returns an NSArray.
+
+holidaysInSeason:inDatabase: which takes two arguments, an NSString called season and an NSDictionary called database, and returns an NSArray.
+
+suppliesInHoliday:inSeason:inDatabase: which takes three arguments: an NSString called holiday, an NSString called season, and an NSDictionary called database; and returns an NSArray.
+
+holiday:isInSeason:inDatabase: which takes three arguments: an NSString called holiday, an NSString called season, and an NSDictionary called database; and returns a BOOL.
+
+supply:isInHoliday:inSeason:inDatabase: which takes four arguments: an NSString called supply, an NSString called holiday, an NSString called season, and an NSDictionary called database; and returns a BOOL.
+
+addHoliday:toSeason:inDatabase: which takes three arguments: an NSString called holiday, an NSString called season, and an NSDictionary called database; and returns an NSDictionary.
+
+addSupply:toHoliday:inSeason:inDatabase: which takes four arguments: an NSString called supply, an NSString called holiday, an NSString called season, and an NSDictionary called database; and returns an NSDictionary.
+
+*/
+
 - (NSArray *)pickApplesFromFruits:(NSArray *)fruits {
     
     NSPredicate *applePredicate = [NSPredicate predicateWithFormat:@"self == 'apple'"];
