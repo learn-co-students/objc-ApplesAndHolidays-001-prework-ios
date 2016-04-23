@@ -5,6 +5,10 @@
 
 @implementation FISAppDelegate
 
+// Objectives:
+// 1. Use NSPredicate to filter objects in an array.
+// 2. Practice accessing a nested collection.
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSMutableDictionary *)launchOptions {
     // Override point for customization after application launch.
     
