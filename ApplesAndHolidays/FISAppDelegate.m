@@ -21,17 +21,22 @@
  */
 
 -(NSArray *)pickApplesFromFruits : (NSArray *)fruits{
-    NSMutableArray *pickApplesFromFruits = [[NSMutableArray alloc] init];
     NSString *apple = @"apple";
-    for (NSString *fruit in fruits) {
-        if ([fruit isEqualToString: apple]){
-            [pickApplesFromFruits addObject:apple];
-        }
-    }
-    
-    return [NSArray arrayWithArray:pickApplesFromFruits];
-    
+    //The self identifier below is not a part of the string denoted by "" it is a part of a format (?)
+    NSPredicate *applePredicate = [NSPredicate predicateWithFormat:@"self == %@", apple];
+    NSArray *pickApplesFromFruits = [fruits filteredArrayUsingPredicate:applePredicate];
+
+    return pickApplesFromFruits;
 }
+//    NSMutableArray *pickApplesFromFruits = [[NSMutableArray alloc] init];
+//    NSString *apple = @"apple";
+//    for (NSString *fruit in fruits) {
+//        if ([fruit isEqualToString: apple]){
+//            [pickApplesFromFruits addObject:apple];
+//        }
+//    }
+//    return [NSArray arrayWithArray:pickApplesFromFruits];
+    
 
 
 
@@ -118,7 +123,7 @@ return [[database[season] allKeys] containsObject:holiday];
      inSeason : (NSString *)season
    inDatabase : (NSDictionary *)database{
     //Will look through the database to look in the seasons to look in holidays, to see if the specific holiday contains the given supply.
-    //containsObject will return a BOOL type, which is why it works. 
+    //containsObject will return a BOOL type, which is why it works.
        return [database[season][holiday] containsObject:supply];
 }
 
@@ -130,8 +135,9 @@ return [[database[season] allKeys] containsObject:holiday];
 -(NSDictionary *)addHoliday : (NSString *)holiday
                    toSeason : (NSString *)season
                  inDatabase : (NSDictionary *) database{
-    return nil;
-
+    //initialize a new dict using the added holiday.
+    database[season][holiday]=[[NSMutableArray alloc]init];
+    return database;
 }
 
 /*addSupply:toHoliday:inSeason:inDatabase: which takes four arguments: an NSString called supply, an NSString called holiday, an NSString called season, and an NSDictionary called database; and returns an NSDictionary.
@@ -142,8 +148,9 @@ return [[database[season] allKeys] containsObject:holiday];
                  toHoliday : (NSString *)holiday
                   inSeason : (NSString *)season
                 inDatabase : (NSDictionary *)database{
-    return nil;
-
+    //This one is different from the previous one because we are adding to an array, not creating a new value pair list.
+    [database[season][holiday]addObject:supply];
+    return database;
 }
 
 
