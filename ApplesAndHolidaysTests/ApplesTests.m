@@ -24,7 +24,7 @@ describe(@"ApplesSpec", ^{
                             @"pear"  ,
                             @"kiwi"  ];
         
-        fruitsOneApple = @[ @"apple"  ,
+        fruitsOneApple = @[  @"apple"  ,
                              @"orange",
                              @"pear"  ];
         
